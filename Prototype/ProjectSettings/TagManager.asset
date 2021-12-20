@@ -24,8 +24,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Programmer's layer 1
+  - Programmer's layer ground
   - 
   - 
   - 
@@ -49,4 +49,10 @@ TagManager:
     locked: 0
   - name: Layer 3
     uniqueID: 4189426099
+    locked: 0
+  - name: Programming Layer ground
+    uniqueID: 285600407
+    locked: 0
+  - name: Programming Layer 1
+    uniqueID: 2427239463
     locked: 0
