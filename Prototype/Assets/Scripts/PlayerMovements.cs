@@ -7,6 +7,7 @@ public class PlayerMovements : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     private Vector2 movement;
+    public Animator animator;
     private void Start()
     {
         
@@ -22,6 +23,10 @@ public class PlayerMovements : MonoBehaviour
         float x = movement.x = Input.GetAxisRaw("Horizontal");
         float y = movement.y = Input.GetAxisRaw("Vertical");
 
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.magnitude);
+        
         // Detect direction of animation or sprite
         if (x == -1)
         {
@@ -45,8 +50,8 @@ public class PlayerMovements : MonoBehaviour
     void FixedUpdate()
     {
         movement.Normalize();
-        Debug.Log(movement.x);
-        Debug.Log(movement.y);
+        //Debug.Log(movement.x);
+        //Debug.Log(movement.y);
         // Moving
         rb.velocity = new Vector2(movement.x, movement.y) * moveSpeed;
     }
