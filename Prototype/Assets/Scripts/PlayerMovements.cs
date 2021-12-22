@@ -16,7 +16,7 @@ public class PlayerMovements : MonoBehaviour
     private void Update()
     {
         // Reset Vector2
-        Vector2 movement = Vector2.zero;
+        movement = Vector2.zero;
 
         // Input
         float x = movement.x = Input.GetAxisRaw("Horizontal");
@@ -41,14 +41,13 @@ public class PlayerMovements : MonoBehaviour
             
         }
 
-        movement.Normalize();
-        Debug.Log(x);
-        Debug.Log(y);
     }
-    private void FixedUpdate()
+    void FixedUpdate()
     {
+        movement.Normalize();
+        Debug.Log(movement.x);
+        Debug.Log(movement.y);
         // Moving
-        rb.velocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed);
-
+        rb.velocity = new Vector2(movement.x, movement.y) * moveSpeed;
     }
 }
