@@ -22,36 +22,33 @@ public class PlayerMovements : MonoBehaviour
         // Input
         float x = movement.x = Input.GetAxisRaw("Horizontal");
         float y = movement.y = Input.GetAxisRaw("Vertical");
-
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.magnitude);
         
-        // Detect direction of animation or sprite
-        if (x == -1)
+        // Parameter Animation Controller
+        if (Input.GetKey(KeyCode.A))
         {
-            
+            animator.SetInteger("Direction", 2);
         }
-        else if (x == 1)
+        else if (Input.GetKey(KeyCode.D))
         {
-            
-        }
-
-        if (y == -1)
-        {
-            
-        }
-        else if (y == 1)
-        {
-            
+            animator.SetInteger("Direction", 3);
         }
 
+        if (Input.GetKey(KeyCode.S))
+        {
+            animator.SetInteger("Direction", 0);
+        }
+        else if (Input.GetKey(KeyCode.W))
+        {
+            animator.SetInteger("Direction", 1);
+        }
     }
     void FixedUpdate()
     {
+        // Turn Vector2 to direction
         movement.Normalize();
         //Debug.Log(movement.x);
         //Debug.Log(movement.y);
+
         // Moving
         rb.velocity = new Vector2(movement.x, movement.y) * moveSpeed;
     }
