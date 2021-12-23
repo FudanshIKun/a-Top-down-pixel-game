@@ -24,20 +24,20 @@ public class PlayerMovements : MonoBehaviour
         float y = movement.y = Input.GetAxisRaw("Vertical");
         
         // Parameter Animation Controller
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && movement.y == 0)
         {
             animator.SetInteger("Direction", 2);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) && movement.y == 0)
         {
             animator.SetInteger("Direction", 3);
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && movement.x == 0)
         {
             animator.SetInteger("Direction", 0);
         }
-        else if (Input.GetKey(KeyCode.W))
+        else if (Input.GetKey(KeyCode.W) && movement.x == 0)
         {
             animator.SetInteger("Direction", 1);
         }
