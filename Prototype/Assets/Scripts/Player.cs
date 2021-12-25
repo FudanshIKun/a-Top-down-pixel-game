@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovements : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     private Vector2 movement;
     public Animator animator;
+    public TileManager tilemanager;
+    public Collider2D hit;
+    public LayerMask mask;
     private void Start()
     {
         
@@ -16,13 +19,25 @@ public class PlayerMovements : MonoBehaviour
 
     private void Update()
     {
+        Movement();
+        tile_Detection();
+    }
+    void FixedUpdate()
+    {
+        movement.Normalize();
+
+        // Moving
+        rb.velocity = new Vector2(movement.x, movement.y) * moveSpeed;
+    }
+    void Movement()
+    {
         // Reset Vector2
         movement = Vector2.zero;
 
         // Input
         float x = movement.x = Input.GetAxisRaw("Horizontal");
         float y = movement.y = Input.GetAxisRaw("Vertical");
-        
+
         // Parameter Animation Controller
         if (Input.GetKey(KeyCode.A) && movement.y == 0)
         {
@@ -42,14 +57,15 @@ public class PlayerMovements : MonoBehaviour
             animator.SetInteger("Direction", 1);
         }
     }
-    void FixedUpdate()
+    void tile_Detection()
     {
-        // Turn Vector2 to direction
-        movement.Normalize();
-        //Debug.Log(movement.x);
-        //Debug.Log(movement.y);
-
-        // Moving
-        rb.velocity = new Vector2(movement.x, movement.y) * moveSpeed;
+        Collider2D current;
+        current = Physics2D.Raycast(transform.position + new Vector3(0, 1, 0), Vector2.down, 1.0f, mask).collider ;
+        if (hit.name != current.name)
+        {
+            hit = current;
+            tilemanager.checkLevel(hit);
+            Debug.Log(hit.name);
+        }
     }
 }
