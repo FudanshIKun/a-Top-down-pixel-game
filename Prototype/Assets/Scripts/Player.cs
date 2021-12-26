@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
         RaycastHit2D newHit = Physics2D.Raycast(rayCastPoint.position, Vector2.down, 0.05f, layerMask);
         tilemanager.checkLevel(hit);
     }
-    void tile_detection()
+    void tile_detection() // เช็คว่า player อยู่บน tile อะไร และส่งค่า Collider ที่พบให้กับ Script ที่ต้องการ
     {
         RaycastHit2D newHit = Physics2D.Raycast(rayCastPoint.position, Vector2.down, 0.05f, layerMask);
         if(newHit.collider == null || newHit.collider.name == "BridgeArea" )
@@ -70,12 +70,12 @@ public class Player : MonoBehaviour
             return;
         }
         Collider2D currentHit = newHit.collider;
-        //Debug.Log(currentHit.name);
         if (currentHit != hit)
         {
             Debug.Log("new" + currentHit.name + " " + hit.name);
             hit = currentHit;
             tilemanager.checkLevel(hit);
+
         } 
     }
 }
