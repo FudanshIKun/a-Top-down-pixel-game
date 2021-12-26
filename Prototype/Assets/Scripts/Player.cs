@@ -27,9 +27,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         movement.Normalize();
-
-        // Moving
-        rb.velocity = new Vector2(movement.x, movement.y) * moveSpeed;
+        rb.MovePosition(rb.position + new Vector2(movement.x, movement.y) * moveSpeed * Time.fixedDeltaTime);
     }
     void Movement()
     {
