@@ -26,8 +26,7 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        movement.Normalize();
-        rb.MovePosition(rb.position + new Vector2(movement.x, movement.y) * moveSpeed * Time.fixedDeltaTime);
+
     }
     void Movement()
     {
@@ -35,8 +34,8 @@ public class Player : MonoBehaviour
         movement = Vector2.zero;
 
         // Input
-        float x = movement.x = Input.GetAxisRaw("Horizontal");
-        float y = movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
         // Parameter Animation Controller
         if (Input.GetKey(KeyCode.A) && movement.y == 0)
@@ -47,7 +46,6 @@ public class Player : MonoBehaviour
         {
             animator.SetInteger("Direction", 3);
         }
-
         if (Input.GetKey(KeyCode.S) && movement.x == 0)
         {
             animator.SetInteger("Direction", 0);
@@ -56,6 +54,8 @@ public class Player : MonoBehaviour
         {
             animator.SetInteger("Direction", 1);
         }
+        movement.Normalize();
+        rb.velocity = movement * moveSpeed;
     }
     void tile_detection_start()
     {
