@@ -57,6 +57,11 @@ public class Player : MonoBehaviour
             animator.SetInteger("Direction", 1);
         }
     }
+    void tile_detection_start()
+    {
+        RaycastHit2D newHit = Physics2D.Raycast(rayCastPoint.position, Vector2.down, 0.05f, layerMask);
+        tilemanager.checkLevel(hit);
+    }
     void tile_detection()
     {
         RaycastHit2D newHit = Physics2D.Raycast(rayCastPoint.position, Vector2.down, 0.05f, layerMask);
@@ -65,7 +70,8 @@ public class Player : MonoBehaviour
             return;
         }
         Collider2D currentHit = newHit.collider;
-        if(currentHit != hit)
+        //Debug.Log(currentHit.name);
+        if (currentHit != hit)
         {
             Debug.Log("new" + currentHit.name + " " + hit.name);
             hit = currentHit;
