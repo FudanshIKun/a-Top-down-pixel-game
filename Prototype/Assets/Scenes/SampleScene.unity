@@ -4540,6 +4540,7 @@ GameObject:
   - component: {fileID: 1283270109}
   - component: {fileID: 1283270108}
   - component: {fileID: 1283270103}
+  - component: {fileID: 1283270104}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -4573,6 +4574,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.67, y: 0.42}
   m_EdgeRadius: 0
+--- !u!114 &1283270104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283270102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0877ef9fb11052e47b2af89029e59a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1283270109}
+  levels:
+  - {fileID: 1376725053}
+  - {fileID: 471257715}
+  - {fileID: 75779535}
 --- !u!212 &1283270105
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4675,9 +4693,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1283270109
 MonoBehaviour:
@@ -4691,15 +4709,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37836da961e653c46a69b121ec9f9c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7.5
-  rb: {fileID: 1283270108}
-  animator: {fileID: 1283270107}
-  tilemanager: {fileID: 2058679084}
+  name: 
+  male: 0
+  female: 0
+  moveable: 0
   hit: {fileID: 1376725052}
+  levelManager: {fileID: 2058679084}
   rayCastPoint: {fileID: 1472285980}
   layerMask:
     serializedVersion: 2
     m_Bits: 384
+  sprite: {fileID: 1283270105}
+  moveSpeed: 7.5
+  rb: {fileID: 1283270108}
+  animator: {fileID: 1283270107}
 --- !u!1 &1290632443
 GameObject:
   m_ObjectHideFlags: 0

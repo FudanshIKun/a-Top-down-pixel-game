@@ -8,16 +8,6 @@ public class Level : MonoBehaviour
     public TilemapCollider2D bridge;
     public TilemapCollider2D underBridge;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void toggle_collider(bool state)
     {
         Debug.Log(gameObject.name + " " + state);
