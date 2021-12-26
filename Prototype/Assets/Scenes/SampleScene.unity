@@ -123,6 +123,49 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &160152402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 160152404}
+  - component: {fileID: 160152403}
+  m_Layer: 0
+  m_Name: Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!156049354 &160152403
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160152402}
+  m_Enabled: 1
+  m_CellSize: {x: 1, y: 1, z: 0}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
+--- !u!4 &160152404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160152402}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &288924778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,7 +1129,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1096,7 +1139,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1316,7 +1359,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1515,8 +1558,8 @@ Tilemap:
   - first: {x: 11, y: 5, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1764,26 +1807,26 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 64
+  - m_RefCount: 65
     m_Data: {fileID: 11400000, guid: 953e03fb4bb2b6b43b077443010d533b, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 0b75f0bc73e504c46b9a97e30dc31a7a, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 39c07efcc8279f744aad4bba11179db8, type: 2}
-  - m_RefCount: 2
-    m_Data: {fileID: 11400000, guid: 8f7007417103b164b9fd68011e3b402e, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 2075d55e3cfa3294398757a0a26f8f64, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 64
+  - m_RefCount: 65
     m_Data: {fileID: 4379696477068076631, guid: b30b8989c5224664ca2bffd0e543d332,
+      type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 3664113942378276306, guid: b30b8989c5224664ca2bffd0e543d332,
       type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -5499733919262182761, guid: 51fc6430ccc74ac41b91fd3201559356,
       type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 5630623693208749511, guid: 51fc6430ccc74ac41b91fd3201559356,
-      type: 3}
-  - m_RefCount: 2
-    m_Data: {fileID: 4092448419697446523, guid: 51fc6430ccc74ac41b91fd3201559356,
       type: 3}
   m_TileMatrixArray:
   - m_RefCount: 68
@@ -2000,7 +2043,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645805736}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -2885,9 +2928,6 @@ MonoBehaviour:
   animator: {fileID: 1283270107}
   tilemanager: {fileID: 2058679084}
   hit: {fileID: 1376725052}
-  mask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &1290632443
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     public Animator animator;
     public TileManager tilemanager;
     public Collider2D hit;
-    public LayerMask mask;
     private void Start()
     {
         
@@ -59,13 +58,8 @@ public class Player : MonoBehaviour
     }
     void tile_Detection()
     {
-        Collider2D current;
-        current = Physics2D.Raycast(transform.position + new Vector3(0, 1, 0), Vector2.down, 1.0f, mask).collider ;
-        if (hit.name != current.name)
-        {
-            hit = current;
-            tilemanager.checkLevel(hit);
-            Debug.Log(hit.name);
-        }
+        hit = Physics2D.Raycast(transform.position + new Vector3(0, 1, 0), Vector2.down).collider ;
+        tilemanager.checkLevel(hit);
+        Debug.Log(hit.name);
     }
 }
