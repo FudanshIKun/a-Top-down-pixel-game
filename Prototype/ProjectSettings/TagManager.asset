@@ -41,18 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Layer 1
+  - name: Ground Layer
     uniqueID: 2425651459
     locked: 0
-  - name: Layer 2
+  - name: Playing Layer
     uniqueID: 4250941897
     locked: 0
-  - name: Layer 3
+  - name: Roof Layer
     uniqueID: 4189426099
-    locked: 0
-  - name: Programming Layer ground
-    uniqueID: 285600407
-    locked: 0
-  - name: Programming Layer 1
-    uniqueID: 2427239463
     locked: 0
