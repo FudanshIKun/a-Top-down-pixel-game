@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     public Animator animator;
     public TileManager tilemanager;
     public Collider2D hit;
+    [Header("GroundDectection")]
+    public Transform rayCastPoint;
+    public LayerMask layerMask;
     private void Start()
     {
         
@@ -19,7 +22,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Movement();
-        tile_Detection();
+        tile_detection();
     }
     void FixedUpdate()
     {
@@ -56,10 +59,19 @@ public class Player : MonoBehaviour
             animator.SetInteger("Direction", 1);
         }
     }
-    void tile_Detection()
+    void tile_detection()
     {
-        hit = Physics2D.Raycast(transform.position + new Vector3(0, 1, 0), Vector2.down).collider ;
-        tilemanager.checkLevel(hit);
-        Debug.Log(hit.name);
+        RaycastHit2D newHit = Physics2D.Raycast(rayCastPoint.position + new Vector3(0, 1, 0), Vector2.down, 0.05f, layerMask);
+        if(newHit.collider == null || newHit.collider.name == "BridgeArea" )
+        {
+            return;
+        }
+        Collider2D currentHit = newHit.collider;
+        if(currentHit != hit)
+        {
+            Debug.Log("new" + currentHit.name + " " + hit.name);
+            hit = currentHit;
+            tilemanager.checkLevel(hit);
+        }    
     }
 }

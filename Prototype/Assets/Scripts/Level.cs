@@ -20,6 +20,7 @@ public class Level : MonoBehaviour
 
     public void toggle_collider(bool state)
     {
+        Debug.Log(gameObject.name + " " + state);
         if (bridge == null) return;
         bridge.enabled = state;
         underBridge.enabled = !state;

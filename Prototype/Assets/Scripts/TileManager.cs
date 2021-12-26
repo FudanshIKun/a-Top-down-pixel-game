@@ -20,8 +20,7 @@ public class TileManager : MonoBehaviour
     }
         
     public void checkLevel(Collider2D hit)  
-    {
-        
+    {       
         for (int i = 0; i < levels.Length; i++)
         {
             if (hit.name == levels[i].name)
