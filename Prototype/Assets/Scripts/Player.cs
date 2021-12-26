@@ -67,7 +67,8 @@ public class Player : MonoBehaviour
             return;
         }
         Collider2D currentHit = newHit.collider;
-        if(currentHit != hit)
+        //Debug.Log(currentHit.name);
+        if (currentHit != hit)
         {
             Debug.Log("new" + currentHit.name + " " + hit.name);
             hit = currentHit;
