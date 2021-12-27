@@ -4709,14 +4709,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37836da961e653c46a69b121ec9f9c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.5
-  rb: {fileID: 1283270108}
-  animator: {fileID: 1283270107}
+  name: 
+  male: 0
+  female: 0
+  moveable: 0
   hit: {fileID: 1376725052}
+  levelManager: {fileID: 2058679084}
   rayCastPoint: {fileID: 1472285980}
   layerMask:
     serializedVersion: 2
     m_Bits: 384
+  sprite: {fileID: 1283270105}
+  moveSpeed: 2.5
+  rb: {fileID: 1283270108}
+  animator: {fileID: 1283270107}
 --- !u!1 &1290632443
 GameObject:
   m_ObjectHideFlags: 0
