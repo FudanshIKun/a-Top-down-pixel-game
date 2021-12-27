@@ -13,6 +13,8 @@ public class Player : Character
     
     private void Start()
     {
+        animator.SetFloat("X", 0);
+        animator.SetFloat("Y", -1);
         tile_detection_start();
     }
 
@@ -37,22 +39,37 @@ public class Player : Character
     }
     void player_animatior()
     {
+        // Reset Player back to Idle
+        animator.SetBool("IsMoving", false);
+
         // Parameter Animation Controller
+        if (Input.GetKey(KeyCode.W) && movement.x == 0)
+        {
+            animator.SetBool("IsMoving", true);
+            animator.SetFloat("X", 0);
+            animator.SetFloat("Y", 1);
+        }
+        else if (Input.GetKey(KeyCode.S) && movement.x == 0)
+        {
+            animator.SetBool("IsMoving", true);
+            animator.SetFloat("X", 0);
+            animator.SetFloat("Y", -1);
+
+        }
+
         if (Input.GetKey(KeyCode.A) && movement.y == 0)
         {
-            animator.Play("A");
+            animator.SetBool("IsMoving", true);
+            animator.SetFloat("X", -1);
+            animator.SetFloat("Y", 0);
+
         }
         else if (Input.GetKey(KeyCode.D) && movement.y == 0)
         {
-            animator.Play("D");
-        }
-        if (Input.GetKey(KeyCode.S) && movement.x == 0)
-        {
-            animator.Play("S");
-        }
-        else if (Input.GetKey(KeyCode.W) && movement.x == 0)
-        {
-            animator.Play("W");
+            animator.SetBool("IsMoving", true);
+            animator.SetFloat("X", 1);
+            animator.SetFloat("Y", 0);
+
         }
     }
     
