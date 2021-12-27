@@ -4713,6 +4713,7 @@ MonoBehaviour:
   male: 0
   female: 0
   moveable: 0
+  me: {fileID: 1283270102}
   hit: {fileID: 1376725052}
   levelManager: {fileID: 2058679084}
   rayCastPoint: {fileID: 1472285980}

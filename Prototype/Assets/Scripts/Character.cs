@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
     public string name;
     public bool male, female;
     public bool moveable;
+    public GameObject me;
 
     [Header("Ground Dectection")]
     public Collider2D hit;
