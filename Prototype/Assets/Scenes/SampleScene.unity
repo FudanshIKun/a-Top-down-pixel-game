@@ -7927,7 +7927,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 384
   sprite: {fileID: 1877798504}
-  moveSpeed: 5
+  moveSpeed: 2.5
   rb: {fileID: 1877798506}
   animator: {fileID: 1877798503}
 --- !u!61 &1877798508
