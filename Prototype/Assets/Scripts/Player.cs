@@ -40,16 +40,17 @@ public class Player : Character
     void player_animatior()
     {
         // Reset Player back to Idle
+        if (movement.x == 0 && movement.y == 0)
         animator.SetBool("IsMoving", false);
 
         // Parameter Animation Controller
-        if (Input.GetKey(KeyCode.W) && movement.x == 0)
+        if (movement.y == 1 && movement.x == 0)
         {
             animator.SetBool("IsMoving", true);
             animator.SetFloat("X", 0);
             animator.SetFloat("Y", 1);
         }
-        else if (Input.GetKey(KeyCode.S) && movement.x == 0)
+        else if (movement.y == -1 && movement.x == 0)
         {
             animator.SetBool("IsMoving", true);
             animator.SetFloat("X", 0);
@@ -57,14 +58,14 @@ public class Player : Character
 
         }
 
-        if (Input.GetKey(KeyCode.A) && movement.y == 0)
+        if (movement.x == -1 && movement.y == 0)
         {
             animator.SetBool("IsMoving", true);
             animator.SetFloat("X", -1);
             animator.SetFloat("Y", 0);
 
         }
-        else if (Input.GetKey(KeyCode.D) && movement.y == 0)
+        else if (movement.x == 1 && movement.y == 0)
         {
             animator.SetBool("IsMoving", true);
             animator.SetFloat("X", 1);
