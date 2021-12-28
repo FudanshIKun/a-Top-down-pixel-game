@@ -5,7 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class LevelManager : MonoBehaviour
 {
-    public Player player;
     public Level[] levels;
     
     

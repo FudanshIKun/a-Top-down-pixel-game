@@ -11342,18 +11342,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37836da961e653c46a69b121ec9f9c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  Name: 
   male: 0
   female: 0
   moveable: 0
-  me: {fileID: 1877798502}
   hit: {fileID: 1376725052}
   levelManager: {fileID: 2058679084}
   rayCastPoint: {fileID: 1472285980}
   layerMask:
     serializedVersion: 2
     m_Bits: 384
-  sprite: {fileID: 1877798504}
+  sprite:
+  - {fileID: 1877798504}
+  - {fileID: 1117313189}
   moveSpeed: 2.5
   rb: {fileID: 1877798506}
   animator: {fileID: 1877798503}
@@ -11772,7 +11773,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0877ef9fb11052e47b2af89029e59a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1877798507}
   levels:
   - {fileID: 1376725053}
   - {fileID: 471257715}

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public string name;
+    public string Name;
     public bool male, female;
     public bool moveable;
-    public GameObject me;
 
     [Header("Ground Dectection")]
     public Collider2D hit;
@@ -16,11 +15,15 @@ public class Character : MonoBehaviour
     public LayerMask layerMask;
 
     [Header("Layer Sorting")]
-    public SpriteRenderer sprite;
+    public SpriteRenderer[] sprite;
+    
     protected void tile_detection_start()
     {
         RaycastHit2D newHit = Physics2D.Raycast(rayCastPoint.position, Vector2.down, 0.05f, layerMask);
-        levelManager.checkLevel(hit, sprite);
+        foreach (var item in sprite)
+        {
+            levelManager.checkLevel(hit, item);
+        }
 
     }
 
@@ -36,7 +39,10 @@ public class Character : MonoBehaviour
         {
             Debug.Log("new" + currentHit.name + " " + hit.name);
             hit = currentHit;
-            levelManager.checkLevel(hit, sprite);
+            foreach (var item in sprite)
+            {
+                levelManager.checkLevel(hit, item);
+            }
 
         }
     }
