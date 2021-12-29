@@ -8,13 +8,12 @@ public class Player : Character
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
+    public Sprite firstSprite;
     Vector2 movement;
 
     
     private void Start()
     {
-        animator.SetFloat("X", 0);
-        animator.SetFloat("Y", -1);
         tile_detection_start();
     }
 
@@ -37,6 +36,7 @@ public class Player : Character
         movement.Normalize();
         rb.velocity = movement * moveSpeed;
     }
+    
     void player_animatior()
     {
         // Reset Player back to Idle
