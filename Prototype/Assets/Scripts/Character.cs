@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
     public bool moveable;
 
     [Header("Ground Dectection")]
-    public Collider2D hit;
+    private Collider2D hit;
     public LevelManager levelManager;
     public Transform rayCastPoint;
     public LayerMask layerMask;
@@ -20,6 +20,10 @@ public class Character : MonoBehaviour
     protected void tile_detection_start()
     {
         RaycastHit2D newHit = Physics2D.Raycast(rayCastPoint.position, Vector2.down, 0.05f, layerMask);
+        if (hit == null)
+        {
+            hit = newHit.collider;
+        }
         foreach (var item in sprite)
         {
             levelManager.checkLevel(hit, item);
@@ -30,12 +34,13 @@ public class Character : MonoBehaviour
     protected void tile_detection()
     {
         RaycastHit2D newHit = Physics2D.Raycast(rayCastPoint.position, Vector2.down, 0.05f, layerMask);
+        //Debug.Log(newHit.collider.name);
         if (newHit.collider == null || newHit.collider.name == "BridgeArea")
         {
             return;
         }
         Collider2D currentHit = newHit.collider;
-        if (currentHit != hit)
+        if (currentHit != hit || hit == null)
         {
             Debug.Log("new" + currentHit.name + " " + hit.name);
             hit = currentHit;
