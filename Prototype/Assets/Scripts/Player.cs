@@ -6,14 +6,18 @@ public class Player : Character
 {
     [Header("Player management")]
     public float moveSpeed = 5f;
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
     public Animator animator;
     public Sprite firstSprite;
     Vector2 movement;
 
-    
+    private void Awake()
+    {
+        movement = GameManager.Instance.playerDirection;
+    }
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         tile_detection_start();
     }
 
@@ -74,4 +78,8 @@ public class Player : Character
         }
     }
     
+    void clear_cache()
+    {
+        
+    }
 }
