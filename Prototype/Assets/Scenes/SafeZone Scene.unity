@@ -5750,7 +5750,7 @@ GameObject:
   - component: {fileID: 661019780}
   - component: {fileID: 661019783}
   m_Layer: 14
-  m_Name: Gate 0
+  m_Name: WestSafeZone Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5790,7 +5790,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661019779}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.491179, y: 4.5072317, z: -5.4116545}
+  m_LocalPosition: {x: 21.501, y: 4.478, z: -5.4116545}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1693477178}
@@ -5830,8 +5830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelmanager: {fileID: 2058679084}
   nextScene: Danger Scene
-  spawn: 0
-  direction: {x: 1, y: 0}
+  destinationGate: EastDanger Gate
 --- !u!1 &662889686
 GameObject:
   m_ObjectHideFlags: 0
@@ -6763,9 +6762,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b65b18f6aa44a74f9b66195c5b4ce32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnGate: 0
+  spawnGate: 
   currentScene: 
-  playerDirection: {x: 0, y: 0}
+  levelmanager: {fileID: 0}
 --- !u!1 &1125632214
 GameObject:
   m_ObjectHideFlags: 0
@@ -11404,7 +11403,6 @@ GameObject:
   - component: {fileID: 1877798507}
   - component: {fileID: 1877798506}
   - component: {fileID: 1877798508}
-  - component: {fileID: 1877798509}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -11491,7 +11489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877798502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.57, y: 4.33, z: -5}
+  m_LocalPosition: {x: 21.7, y: -0.14, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1472285980}
@@ -11564,18 +11562,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.08}
   m_Size: {x: 0.26, y: 0.0001}
   m_Direction: 0
---- !u!114 &1877798509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877798502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94fbc5f469645f64ca59e78d4ead3bed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1982335913
 GameObject:
   m_ObjectHideFlags: 0
@@ -11980,9 +11966,9 @@ MonoBehaviour:
   - {fileID: 1376725053}
   - {fileID: 471257715}
   - {fileID: 75779535}
-  gate: []
+  gate:
+  - {fileID: 661019783}
   transitionTime: 1
-  exit_gate: {fileID: 0}
 --- !u!1 &2143078791
 GameObject:
   m_ObjectHideFlags: 0

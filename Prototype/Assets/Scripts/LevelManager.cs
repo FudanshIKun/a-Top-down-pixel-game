@@ -10,9 +10,13 @@ public class LevelManager : MonoBehaviour
 
     [Header("Transition setting")]
     public float transitionTime = 1f;
-    public Collider2D exit_gate;
 
     Animator transition;
+
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
         transition = GetComponent<Animator>();
@@ -22,12 +26,10 @@ public class LevelManager : MonoBehaviour
     {
 
     }
-    
-    public void checkGate(string nextScene, int gate, Vector2 player)
+    public void checkGate(string nextScene, string gate)
     {
         GameManager.Instance.currentScene = nextScene;
         GameManager.Instance.spawnGate = gate;
-        GameManager.Instance.playerDirection = player;
 
         GameManager.Instance.LoadNextScene(GameManager.Instance.currentScene);
     }
