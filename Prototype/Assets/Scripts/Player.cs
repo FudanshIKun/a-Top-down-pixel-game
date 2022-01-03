@@ -13,12 +13,21 @@ public class Player : Character
 
     private void Awake()
     {
-        movement = GameManager.Instance.playerDirection;
+        if (GameManager.player == null)
+        {
+            GameManager.player = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        tile_detection_start();
+        //tile_detection_start();
     }
 
 

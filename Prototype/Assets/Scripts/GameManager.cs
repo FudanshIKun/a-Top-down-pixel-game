@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("SceneStarter")]
-    public int spawnGate;
+    public string spawnGate;
     public string currentScene;
-    public Vector2 playerDirection;
-
+    public static Player player;
+    public LevelManager levelmanager;
 
 
     private void Awake()
@@ -24,35 +24,64 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            assign_new_value();
+            reset_level();
             Destroy(gameObject);
         }
     }
     void Start()
     {
-        
+        StartCoroutine(test());
     }
 
     
     void Update()
     {
-        
+        Debug.Log("kub");
     }
-    public void assign_new_value()
+    public void reset_level()
     {
-        
+        Instance.levelmanager = levelmanager;
     }
     public void LoadNextScene(string nextScene)
     {
-        StartCoroutine(transtionLoading(nextScene));
+        StartCoroutine(transtionLoading(nextScene)); // Load Scene
     }
     #region scene management
     IEnumerator transtionLoading(string scene_to_load)
     {
+        // Prepare bf load scene
+
 
         yield return new WaitForSeconds(1);
 
-        SceneManager.LoadScene(scene_to_load);
+        var asyncLoadLevel = SceneManager.LoadSceneAsync(scene_to_load, LoadSceneMode.Single);
+
+        while (!asyncLoadLevel.isDone)
+        {
+            Debug.Log("Scene loading");
+            yield return null;
+        }
+
+        checkPlayerGate(levelmanager.gate);
+    }
+    private void checkPlayerGate(Gate[] gate)
+    {
+        foreach (var item in  gate)
+        {
+            if (item.name == spawnGate)
+            {
+                Debug.Log("Yeah !");
+                player.transform.position = item.transform.position;
+            }
+        }
     }
     #endregion
+    IEnumerator test()
+    {
+        while (true)
+        {
+            yield return null;
+            Debug.Log("dee");
+        }
+    }
 }

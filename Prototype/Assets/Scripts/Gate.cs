@@ -7,8 +7,9 @@ public class Gate : MonoBehaviour
     [Header("Gate management")]
     public LevelManager levelmanager;
     public string nextScene;
-    public int spawn;
-    public Vector2 direction;
+    public string destinationGate;
+
+    
 
     Animator transition;
     void Start()
@@ -21,12 +22,13 @@ public class Gate : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !collision.isTrigger)
         {
             transition.SetTrigger("Start");
-            levelmanager.checkGate(nextScene, spawn, direction);
+            levelmanager.checkGate(nextScene, destinationGate);
+            gameObject.SetActive(false);
         }
     }
 }
