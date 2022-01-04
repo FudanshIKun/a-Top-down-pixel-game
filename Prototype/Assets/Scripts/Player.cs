@@ -11,6 +11,8 @@ public class Player : Character
     public Sprite firstSprite;
     public Vector2 movement;
 
+    public bool playerInStopMode;
+
     private void Awake()
     {
         if (GameManager.player == null)
@@ -39,6 +41,11 @@ public class Player : Character
     }
     void player_controller()
     {
+        if (playerInStopMode)
+        {
+            return;
+        }
+
         // Reset Vector2
         movement = Vector2.zero;
 
@@ -49,9 +56,14 @@ public class Player : Character
         movement.Normalize();
         rb.velocity = movement * moveSpeed;
     }
-    
+
     void player_animatior()
     {
+        if (playerInStopMode)
+        {
+
+        }
+
         // Reset Player back to Idle
         if (movement.x == 0 && movement.y == 0)
         animator.SetBool("IsMoving", false);

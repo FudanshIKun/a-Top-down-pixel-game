@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public string spawnGate;
     public string currentScene;
     public static Player player;
+    public CameraMovement camera;
     public LevelManager levelmanager;
 
 
@@ -41,6 +42,9 @@ public class GameManager : MonoBehaviour
     public void reset_level()
     {
         Instance.levelmanager = levelmanager;
+        player.levelManager = levelmanager;
+        Instance.camera.minValues = camera.minValues;
+        Instance.camera.maxValues = camera.maxValues;
     }
     public void LoadNextScene(string nextScene)
     {
@@ -50,7 +54,7 @@ public class GameManager : MonoBehaviour
     IEnumerator transtionLoading(string scene_to_load)
     {
         // Prepare before load scene
-
+        player.playerInStopMode = true;
 
         yield return new WaitForSeconds(1);
 
@@ -63,6 +67,7 @@ public class GameManager : MonoBehaviour
         }
 
         checkPlayerGate(levelmanager.gate);
+        player.playerInStopMode = false;
     }
     private void checkPlayerGate(Gate[] gate)
     {
