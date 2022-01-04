@@ -8,6 +8,8 @@ public class Gate : MonoBehaviour
     public LevelManager levelmanager;
     public string nextScene;
     public string destinationGate;
+    public bool horizontal, vertical;
+    public bool integer;
 
     
 
@@ -26,9 +28,70 @@ public class Gate : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !collision.isTrigger)
         {
-            transition.SetTrigger("Start");
-            levelmanager.checkGate(nextScene, destinationGate);
-            gameObject.SetActive(false);
+            if (checkDirection())
+            {
+                transition.SetTrigger("Start");
+                levelmanager.checkGate(nextScene, destinationGate);
+                gameObject.SetActive(false);
+            }
         }
+    }
+    private bool checkDirection()
+    {
+        if (horizontal)
+        {
+            if (integer)
+            {
+                if (GameManager.player.movement.x == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (GameManager.player.movement.x == -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        else if (vertical)
+        {
+            if (integer)
+            {
+                if (GameManager.player.movement.y == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (GameManager.player.movement.y == -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
     }
 }

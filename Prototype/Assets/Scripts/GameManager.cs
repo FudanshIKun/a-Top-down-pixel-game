@@ -30,13 +30,13 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        StartCoroutine(test());
+        
     }
 
     
     void Update()
     {
-        Debug.Log("kub");
+        
     }
     public void reset_level()
     {
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     #region scene management
     IEnumerator transtionLoading(string scene_to_load)
     {
-        // Prepare bf load scene
+        // Prepare before load scene
 
 
         yield return new WaitForSeconds(1);
@@ -70,18 +70,9 @@ public class GameManager : MonoBehaviour
         {
             if (item.name == spawnGate)
             {
-                Debug.Log("Yeah !");
                 player.transform.position = item.transform.position;
             }
         }
     }
     #endregion
-    IEnumerator test()
-    {
-        while (true)
-        {
-            yield return null;
-            Debug.Log("dee");
-        }
-    }
 }
