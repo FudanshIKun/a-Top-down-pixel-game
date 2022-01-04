@@ -1465,6 +1465,36 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &134626183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 134626184}
+  m_Layer: 0
+  m_Name: Exit Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &134626184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134626183}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.53, y: -0.12, z: -2.3604174}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 661019781}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &148129223
 GameObject:
   m_ObjectHideFlags: 0
@@ -5790,10 +5820,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661019779}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.501, y: 4.478, z: -5.4116545}
+  m_LocalPosition: {x: 20.49, y: 4.56, z: -5.4116545}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1693477178}
+  - {fileID: 134626184}
   m_Father: {fileID: 2058679083}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5831,6 +5862,9 @@ MonoBehaviour:
   levelmanager: {fileID: 2058679084}
   nextScene: Danger Scene
   destinationGate: EastDanger Gate
+  horizontal: 1
+  vertical: 0
+  integer: 1
 --- !u!1 &662889686
 GameObject:
   m_ObjectHideFlags: 0
@@ -6764,7 +6798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnGate: 
   currentScene: 
-  levelmanager: {fileID: 0}
+  levelmanager: {fileID: 2058679084}
 --- !u!1 &1125632214
 GameObject:
   m_ObjectHideFlags: 0
@@ -11546,6 +11580,7 @@ MonoBehaviour:
   animator: {fileID: 1877798503}
   firstSprite: {fileID: -8778861857409344103, guid: e7baca7c165e31c429fed93da23660c3,
     type: 3}
+  movement: {x: 0, y: 0}
 --- !u!70 &1877798508
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

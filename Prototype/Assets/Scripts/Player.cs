@@ -9,7 +9,7 @@ public class Player : Character
     private Rigidbody2D rb;
     public Animator animator;
     public Sprite firstSprite;
-    Vector2 movement;
+    public Vector2 movement;
 
     private void Awake()
     {
