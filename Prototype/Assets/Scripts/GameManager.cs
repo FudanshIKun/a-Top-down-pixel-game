@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instance;
 
     [Header("SceneStarter")]
     public string spawnGate;
     public string currentScene;
     public static Player player;
-    public CameraMovement camera;
+    public CameraMovement mainCam;
     public LevelManager levelmanager;
 
 
@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
     {
         Instance.levelmanager = levelmanager;
         player.levelManager = levelmanager;
-        Instance.camera.minValues = camera.minValues;
-        Instance.camera.maxValues = camera.maxValues;
+        Instance.mainCam.minValues = mainCam.minValues;
+        Instance.mainCam.maxValues = mainCam.maxValues;
     }
     public void LoadNextScene(string nextScene)
     {

@@ -4046,10 +4046,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260dca33aa6b9444b43545eceb1e128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1877798505}
+  player: {fileID: 0}
   lerpSpeed: 4
   minValues: {x: 0.21, y: -0.51, z: -100}
   maxValues: {x: 14.69, y: 15.5, z: -100}
+  boundPosition: {x: 0, y: 0, z: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -7138,6 +7139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnGate: 
   currentScene: 
+  mainCam: {fileID: 519420030}
   levelmanager: {fileID: 2058679084}
 --- !u!1 &1125632214
 GameObject:
@@ -12814,6 +12816,7 @@ MonoBehaviour:
   firstSprite: {fileID: -8778861857409344103, guid: e7baca7c165e31c429fed93da23660c3,
     type: 3}
   movement: {x: 0, y: 0}
+  playerInStopMode: 0
 --- !u!70 &1877798508
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

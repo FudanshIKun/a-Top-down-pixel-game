@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
     public Transform player;
     public float lerpSpeed = 2.0f;
     public Vector3 minValues, maxValues;
+    public Vector3 boundPosition;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class CameraMovement : MonoBehaviour
         if(player == null) return;
 
         minValues.z = -100; maxValues.z = -100;
-        Vector3 boundPosition = new Vector3(
+        boundPosition = new Vector3(
             Mathf.Clamp(player.position.x, minValues.x, maxValues.x),
             Mathf.Clamp(player.position.y, minValues.y, maxValues.y),
             Mathf.Clamp(player.position.z, minValues.z, maxValues.z));
