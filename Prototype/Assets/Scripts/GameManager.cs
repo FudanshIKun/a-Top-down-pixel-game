@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    //Singleton
     public static GameManager Instance;
+
+    //GameState
+    public static bool is_paused = false;
 
     [Header("SceneStarter")]
     public string spawnGate;
@@ -74,7 +78,6 @@ public class GameManager : MonoBehaviour
 
         while (!asyncLoadLevel.isDone)
         {
-            Debug.Log("Scene loading");
             yield return null;
         }
 

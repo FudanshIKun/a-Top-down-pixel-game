@@ -8,6 +8,8 @@ public class SceneGate : MonoBehaviour
     public LevelManager levelmanager;
     public string nextScene;
     public string destinationGate;
+    public enum directions {Left, Right, Up, Down}
+    public directions enterDirections;
     public bool horizontal, vertical;
     public bool integer;
     public bool building, map;
@@ -32,7 +34,7 @@ public class SceneGate : MonoBehaviour
         {
             if (map)
             {
-                if (checkDirection())
+                if (check_direction())
                 {
                     transition.SetTrigger("Start");
                     levelmanager.checkGate(nextScene, destinationGate);
@@ -41,7 +43,7 @@ public class SceneGate : MonoBehaviour
             }
             if (building)
             {
-                if (checkDirection())
+                if (check_direction())
                 {
                     GameManager.Instance.enterBuilding();
                     if (GameManager.Instance.interacting && (GameManager.Instance.objectType == "enterBuilding"))
@@ -54,7 +56,7 @@ public class SceneGate : MonoBehaviour
             }
         }
     }
-    private bool checkDirection()
+    private bool check_direction()
     {
         if (horizontal)
         {

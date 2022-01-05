@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Player : Character
 {
-    [Header("Player management")]
-    public float moveSpeed = 5f;
-    private Rigidbody2D rb;
+    [Header("Component")]
     public Animator animator;
     public Sprite firstSprite;
     public Vector2 movement;
 
-    [Header("Player Animation management")]
+    [Header("Animation")]
     public bool playerInStopMode;
     public Transform raycastPoint;
+
+    [Header("Movement")]
+    [SerializeField] float moveSpeed = 5f;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
@@ -36,7 +38,7 @@ public class Player : Character
     {
         if (playerInStopMode)
         {
-            interactingAction();
+            interact();
             return;
         }
 
@@ -55,7 +57,7 @@ public class Player : Character
     {
         if (playerInStopMode)
         {
-            interactingAction();
+            interact();
             return;
         }
 
@@ -93,8 +95,9 @@ public class Player : Character
 
         }
     }
-    void interactingAction()
+    void interact()
     {
+        /*
         if (GameManager.Instance.interacting)
         {
             if (GameManager.Instance.objectType == "enterBuilding")
@@ -102,7 +105,7 @@ public class Player : Character
                 movement = new Vector2(0, 0);
             }
         }
-        return;
+        return;*/
     }
     void clear_cache()
     {
