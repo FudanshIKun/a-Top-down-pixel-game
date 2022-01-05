@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        #region Singleton
+        //Singleton
         if (Instance == null)
         {
             Instance = this;
@@ -33,10 +33,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            reset_level();
+            setup_new_scene();
             Destroy(gameObject);
         }
-        #endregion
     }
     void Start()
     {
@@ -49,11 +48,10 @@ public class GameManager : MonoBehaviour
         interactSystem(objectType);
     }
     #region scene management
-    public void reset_level()
+    public void setup_new_scene()
     {
         Instance.levelmanager = levelmanager;
-        player = Instance.player;
-        player.levelManager = levelmanager;
+        Instance.player.setup();
         reset_camera();
     }
     void reset_camera()

@@ -8,22 +8,30 @@ public class Character : MonoBehaviour
     public bool male, female;
     public bool moveable;
 
+
+    [Header("Sprites")]
+    public SpriteRenderer[] characterSprites;
+
     [Header("Ground Dectection")]
-    private Collider2D hit;
-    public LevelManager levelManager;
+    private Collider2D lastHit;
+    private LevelManager levelManager;
     public Transform rayCastPoint;
     public LayerMask layerMask;
 
-    [Header("Layer Sorting")]
-    public SpriteRenderer[] sprite;
 
     
+    public virtual void setup()
+    {
+        levelManager = GameManager.Instance.levelmanager;
+        //Create Array of All Sprites
+        characterSprites = GetComponentsInChildren<SpriteRenderer>();
+    }
     protected void tile_detection()
     {
         RaycastHit2D newHit = Physics2D.Raycast(rayCastPoint.position, Vector2.down, 0.05f, layerMask);
-        if (hit == null && newHit.collider != null)
+        if (lastHit == null && newHit.collider != null)
         {
-            hit = newHit.collider;
+            lastHit = newHit.collider;
             return;
         }
         if (newHit.collider == null || newHit.collider.name == "BridgeArea")
@@ -31,15 +39,14 @@ public class Character : MonoBehaviour
             return;
         }
         Collider2D currentHit = newHit.collider;
-        if (currentHit != hit || hit == null)
+        if (currentHit != lastHit || lastHit == null)
         {
-            Debug.Log("new" + currentHit.name + " " + hit.name);
-            hit = currentHit;
-            foreach (var item in sprite)
+            Debug.Log("now on " + currentHit.name);
+            lastHit = currentHit;
+            foreach (var item in characterSprites)
             {
-                levelManager.checkLevel(hit, item);
+                levelManager.checkLevel(lastHit, item);
             }
-
         }
     }
 }

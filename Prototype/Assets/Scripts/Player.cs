@@ -24,7 +24,7 @@ public class Player : Character
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        setup();
     }
 
 
@@ -33,6 +33,12 @@ public class Player : Character
         player_controller();
         player_animatior();
         tile_detection();
+    }
+    //Setting Up player at the start of the scene
+    public override void setup()
+    {
+        base.setup();
+        rb = GetComponent<Rigidbody2D>();
     }
     void player_controller()
     {
@@ -60,39 +66,24 @@ public class Player : Character
             interact();
             return;
         }
-
         // Reset Player back to Idle
         if (movement.x == 0 && movement.y == 0)
-        animator.SetBool("IsMoving", false);
-
-        // Parameter Animation Controller
-        if (movement.y == 1 && movement.x == 0)
         {
-            animator.SetBool("IsMoving", true);
-            animator.SetFloat("X", 0);
-            animator.SetFloat("Y", 1);
+            animator.SetBool("IsMoving", false);
         }
-        else if (movement.y == -1 && movement.x == 0)
+        else
         {
             animator.SetBool("IsMoving", true);
-            animator.SetFloat("X", 0);
-            animator.SetFloat("Y", -1);
-
         }
-
-        if (movement.x == -1 && movement.y == 0)
+        if (Mathf.Abs(movement.x) > 0 && movement.y == 0)
         {
-            animator.SetBool("IsMoving", true);
-            animator.SetFloat("X", -1);
-            animator.SetFloat("Y", 0);
-
+            animator.SetFloat("X", movement.x);
+            animator.SetFloat("Y", movement.y);
         }
-        else if (movement.x == 1 && movement.y == 0)
+        if (Mathf.Abs(movement.y) > 0 && movement.x == 0)
         {
-            animator.SetBool("IsMoving", true);
-            animator.SetFloat("X", 1);
-            animator.SetFloat("Y", 0);
-
+            animator.SetFloat("X", movement.x);
+            animator.SetFloat("Y", movement.y);
         }
     }
     void interact()
@@ -106,9 +97,5 @@ public class Player : Character
             }
         }
         return;*/
-    }
-    void clear_cache()
-    {
-        
     }
 }
