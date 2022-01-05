@@ -11,7 +11,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
-        player = GameManager.player.transform;
+        player = GameManager.Instance.player.transform;
     }
     void Update()
     {

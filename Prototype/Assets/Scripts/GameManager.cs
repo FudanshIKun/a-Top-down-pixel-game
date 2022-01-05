@@ -10,14 +10,18 @@ public class GameManager : MonoBehaviour
     [Header("SceneStarter")]
     public string spawnGate;
     public string currentScene;
-    public static Player player;
+    public Player player;
     public CameraMovement mainCam;
     public LevelManager levelmanager;
+
+    [Header("Interact System")]
+    public bool interacting = false;
+    public string objectType;
 
 
     private void Awake()
     {
-
+        #region Singleton
         if (Instance == null)
         {
             Instance = this;
@@ -28,6 +32,7 @@ public class GameManager : MonoBehaviour
             reset_level();
             Destroy(gameObject);
         }
+        #endregion
     }
     void Start()
     {
@@ -37,20 +42,27 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
-        
+        interactSystem(objectType);
     }
+    #region scene management
     public void reset_level()
     {
         Instance.levelmanager = levelmanager;
+        player = Instance.player;
         player.levelManager = levelmanager;
+        reset_camera();
+    }
+    void reset_camera()
+    {
         Instance.mainCam.minValues = mainCam.minValues;
         Instance.mainCam.maxValues = mainCam.maxValues;
     }
+    
     public void LoadNextScene(string nextScene)
     {
         StartCoroutine(transtionLoading(nextScene)); // Load Scene
     }
-    #region scene management
+    
     IEnumerator transtionLoading(string scene_to_load)
     {
         // Prepare before load scene
@@ -66,10 +78,11 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
+        if (interacting && objectType == "enterBuilding") { reset_interactSystem();  }
         checkPlayerGate(levelmanager.gate);
         player.playerInStopMode = false;
     }
-    private void checkPlayerGate(Gate[] gate)
+    private void checkPlayerGate(SceneGate[] gate)
     {
         foreach (var item in  gate)
         {
@@ -79,5 +92,39 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    #endregion
+
+    #region interaction Management
+
+    bool interactInput(KeyCode key)
+    {
+        return Input.GetKeyDown(key);
+    }
+
+    void reset_interactSystem()
+    {
+        objectType = null; interacting = false;
+    }
+    void interactSystem(string objectType)
+    {
+        if (interacting)
+        {
+            if (objectType == null) { return; }
+
+            // sorting interaction effect
+            if (objectType == "enterBuilding") { enterBuilding(); }
+            Debug.Log("Interacted");
+        }
+    }
+    public void enterBuilding()
+    {
+        if (interactInput(KeyCode.E))
+        {
+            interacting = true;
+            objectType = "enterBuilding";
+        }
+    }
+
+
     #endregion
 }

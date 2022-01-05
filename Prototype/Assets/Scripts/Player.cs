@@ -11,25 +11,18 @@ public class Player : Character
     public Sprite firstSprite;
     public Vector2 movement;
 
+    [Header("Player Animation management")]
     public bool playerInStopMode;
+    public Transform raycastPoint;
 
     private void Awake()
     {
-        if (GameManager.player == null)
-        {
-            GameManager.player = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //tile_detection_start();
     }
 
 
@@ -43,6 +36,7 @@ public class Player : Character
     {
         if (playerInStopMode)
         {
+            interactingAction();
             return;
         }
 
@@ -61,7 +55,8 @@ public class Player : Character
     {
         if (playerInStopMode)
         {
-
+            interactingAction();
+            return;
         }
 
         // Reset Player back to Idle
@@ -98,7 +93,17 @@ public class Player : Character
 
         }
     }
-    
+    void interactingAction()
+    {
+        if (GameManager.Instance.interacting)
+        {
+            if (GameManager.Instance.objectType == "enterBuilding")
+            {
+                movement = new Vector2(0, 0);
+            }
+        }
+        return;
+    }
     void clear_cache()
     {
         

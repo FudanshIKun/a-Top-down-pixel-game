@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class LevelManager : MonoBehaviour
 {
     public Level[] levels;
-    public Gate[] gate;
+    public SceneGate[] gate;
 
     [Header("Transition setting")]
     public float transitionTime = 1f;

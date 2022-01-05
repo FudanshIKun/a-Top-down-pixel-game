@@ -16,26 +16,8 @@ public class Character : MonoBehaviour
 
     [Header("Layer Sorting")]
     public SpriteRenderer[] sprite;
+
     
-    /*
-    protected void tile_detection_start()
-    {
-        RaycastHit2D newHit = Physics2D.Raycast(rayCastPoint.position, Vector2.down, 0.05f, layerMask);
-        if (hit == null || newHit == null)
-        {
-            return;
-        }
-        else
-        {
-            hit = newHit.collider;
-        }
-        foreach (var item in sprite)
-        {
-            levelManager.checkLevel(hit, item);
-        }
-
-    }*/
-
     protected void tile_detection()
     {
         RaycastHit2D newHit = Physics2D.Raycast(rayCastPoint.position, Vector2.down, 0.05f, layerMask);
