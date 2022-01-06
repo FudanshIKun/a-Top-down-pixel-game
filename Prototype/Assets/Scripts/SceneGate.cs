@@ -11,6 +11,7 @@ public class SceneGate : MonoBehaviour
     public bool horizontal, vertical;
     public bool integer;
     public bool building, map;
+    public Transform exitPoint;
     
 
     Animator transition;
@@ -34,9 +35,14 @@ public class SceneGate : MonoBehaviour
             {
                 if (checkDirection())
                 {
-                    transition.SetTrigger("Start");
-                    levelmanager.checkGate(nextScene, destinationGate);
-                    gameObject.SetActive(false);
+                    if (exitPoint == null) { return; }
+                    GameManager.Instance.enterNewMap(exitPoint);
+                    if (GameManager.Instance.interacting && (GameManager.Instance.objectType == "enterMap"))
+                    {
+                        transition.SetTrigger("Start");
+                        levelmanager.checkGate(nextScene, destinationGate);
+                        gameObject.SetActive(false);
+                    }
                 }
             }
             if (building)

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [Header("Interact System")]
     public bool interacting = false;
     public string objectType;
+    public Transform forAnimate;
 
 
     private void Awake()
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
     #region scene management
     public void reset_level()
     {
+        forAnimate = null;
         Instance.levelmanager = levelmanager;
         player = Instance.player;
         player.levelManager = levelmanager;
@@ -123,6 +125,12 @@ public class GameManager : MonoBehaviour
             interacting = true;
             objectType = "enterBuilding";
         }
+    }
+    public void enterNewMap(Transform exitPoint)
+    {
+        forAnimate = exitPoint;
+        interacting = true;
+        objectType = "enterMap";
     }
 
 
