@@ -95,6 +95,10 @@ public class Player : Character
             {
                 movement = new Vector2(0, 0);
             }
+            else if (GameManager.Instance.objectType == "enterMap")
+            {
+                transform.position = Vector2.Lerp(transform.position, GameManager.Instance.forAnimate.position , 0.001f);
+            }
         }
         return;*/
     }
