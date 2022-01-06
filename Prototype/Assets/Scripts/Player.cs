@@ -44,7 +44,7 @@ public class Player : Character
     {
         if (playerInStopMode)
         {
-            interact();
+            interacting();
             return;
         }
 
@@ -63,7 +63,7 @@ public class Player : Character
     {
         if (playerInStopMode)
         {
-            interact();
+            interacting();
             return;
         }
         // Reset Player back to Idle
@@ -86,9 +86,9 @@ public class Player : Character
             animator.SetFloat("Y", movement.y);
         }
     }
-    void interact()
+    void interacting()
     {
-        /*
+        
         if (GameManager.Instance.interacting)
         {
             if (GameManager.Instance.objectType == "enterBuilding")
@@ -100,6 +100,7 @@ public class Player : Character
                 transform.position = Vector2.Lerp(transform.position, GameManager.Instance.forAnimate.position , 0.001f);
             }
         }
-        return;*/
+        return;
+
     }
 }
