@@ -9,11 +9,11 @@ public class Player : Character
     public Sprite firstSprite;
     public Vector2 movement;
 
-    [Header("Animation")]
-    public bool playerInStopMode;
+    [Header("Animation & Interaction")]
+    public bool interacting;
     public Transform raycastPoint;
 
-    [Header("Movement")]
+    [Header("Movement Setting")]
     [SerializeField] float moveSpeed = 5f;
     private Rigidbody2D rb;
 
@@ -30,6 +30,7 @@ public class Player : Character
 
     private void Update()
     {
+        interaction();
         player_controller();
         player_animatior();
         tile_detection();
@@ -42,9 +43,8 @@ public class Player : Character
     }
     void player_controller()
     {
-        if (playerInStopMode)
+        if (interacting)
         {
-            interacting();
             return;
         }
 
@@ -61,11 +61,11 @@ public class Player : Character
 
     void player_animatior()
     {
-        if (playerInStopMode)
+        if (interacting)
         {
-            interacting();
             return;
         }
+
         // Reset Player back to Idle
         if (movement.x == 0 && movement.y == 0)
         {
@@ -86,21 +86,8 @@ public class Player : Character
             animator.SetFloat("Y", movement.y);
         }
     }
-    void interacting()
+    void interaction()
     {
         
-        if (GameManager.Instance.interacting)
-        {
-            if (GameManager.Instance.objectType == "enterBuilding")
-            {
-                movement = new Vector2(0, 0);
-            }
-            else if (GameManager.Instance.objectType == "enterMap")
-            {
-                transform.position = Vector2.Lerp(transform.position, GameManager.Instance.forAnimate.position , 0.001f);
-            }
-        }
-        return;
-
     }
 }

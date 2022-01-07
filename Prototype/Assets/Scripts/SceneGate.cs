@@ -12,7 +12,6 @@ public class SceneGate : MonoBehaviour
     public directions enterDirections;
     public bool horizontal, vertical;
     public bool integer;
-    public bool building, map;
     public Transform exitPoint;
     
 
@@ -33,32 +32,11 @@ public class SceneGate : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !collision.isTrigger)
         {
-            if (map)
+            if (check_direction())
             {
-                if (check_direction())
-                {
-                    if (exitPoint == null) { return; }
-                    GameManager.Instance.enterNewMap(exitPoint);
-                    if (GameManager.Instance.interacting && (GameManager.Instance.objectType == "enterMap"))
-                    {
-                        transition.SetTrigger("Start");
-                        levelmanager.checkGate(nextScene, destinationGate);
-                        gameObject.SetActive(false);
-                    }
-                }
-            }
-            if (building)
-            {
-                if (check_direction())
-                {
-                    GameManager.Instance.enterBuilding();
-                    if (GameManager.Instance.interacting && (GameManager.Instance.objectType == "enterBuilding"))
-                    {
-                        transition.SetTrigger("Start");
-                        levelmanager.checkGate(nextScene, destinationGate);
-                        gameObject.SetActive(false);
-                    }
-                }
+                transition.SetTrigger("Start");
+                levelmanager.checkGate(nextScene, destinationGate);
+                gameObject.SetActive(false);
             }
         }
     }

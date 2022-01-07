@@ -11,17 +11,15 @@ public class GameManager : MonoBehaviour
     //GameState
     public static bool is_paused = false;
 
-    [Header("SceneStarter")]
+    [Header("SceneLoading")]
     public string spawnGate;
     public string currentScene;
+
+    [Header("GameManager Setting")]
     public Player player;
     public CameraMovement mainCam;
     public LevelManager levelmanager;
-
-    [Header("Interact System")]
-    public bool interacting = false;
-    public string objectType;
-    public Transform forAnimate;
+    public InteractionManager interactionmanager;
 
 
     private void Awake()
@@ -46,12 +44,12 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
-        interactSystem(objectType);
+        
     }
     #region scene management
     public void setup_new_scene()
     {
-        forAnimate = null;
+        Instance.interactionmanager = interactionmanager;
         Instance.levelmanager = levelmanager;
         Instance.player.setup();
         reset_camera();
@@ -70,20 +68,21 @@ public class GameManager : MonoBehaviour
     IEnumerator transtionLoading(string scene_to_load)
     {
         // Prepare before load scene
-        player.playerInStopMode = true;
+        
 
         yield return new WaitForSeconds(1);
 
         var asyncLoadLevel = SceneManager.LoadSceneAsync(scene_to_load, LoadSceneMode.Single);
 
+        // Loading Scene
         while (!asyncLoadLevel.isDone)
         {
             yield return null;
         }
 
-        if (interacting && objectType == "enterBuilding") { reset_interactSystem();  }
+        // After Load scene
         checkPlayerGate(levelmanager.gate);
-        player.playerInStopMode = false;
+        
     }
     private void checkPlayerGate(SceneGate[] gate)
     {
@@ -95,45 +94,5 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    #endregion
-
-    #region interaction Management
-
-    bool interactInput(KeyCode key)
-    {
-        return Input.GetKeyDown(key);
-    }
-
-    void reset_interactSystem()
-    {
-        objectType = null; interacting = false;
-    }
-    void interactSystem(string objectType)
-    {
-        if (interacting)
-        {
-            if (objectType == null) { return; }
-
-            // sorting interaction effect
-            if (objectType == "enterBuilding") { enterBuilding(); }
-            Debug.Log("Interacted");
-        }
-    }
-    public void enterBuilding()
-    {
-        if (interactInput(KeyCode.E))
-        {
-            interacting = true;
-            objectType = "enterBuilding";
-        }
-    }
-    public void enterNewMap(Transform exitPoint)
-    {
-        forAnimate = exitPoint;
-        interacting = true;
-        objectType = "enterMap";
-    }
-
-
     #endregion
 }
