@@ -12,6 +12,8 @@ public class Player : Character
     [Header("Animation & Interaction")]
     public bool interacting;
     public Transform raycastPoint;
+    Vector2 directionalAim;
+    public LayerMask interactionLayer;
 
     [Header("Movement Setting")]
     [SerializeField] float moveSpeed = 5f;
@@ -30,8 +32,9 @@ public class Player : Character
 
     private void Update()
     {
-        interaction();
         player_controller();
+        setDirection();
+        interaction();
         player_animatior();
         tile_detection();
     }
@@ -40,11 +43,13 @@ public class Player : Character
     {
         base.setup();
         rb = GetComponent<Rigidbody2D>();
+        interactionLayer = LayerMask.GetMask
     }
     void player_controller()
     {
         if (interacting)
         {
+
             return;
         }
 
@@ -63,6 +68,7 @@ public class Player : Character
     {
         if (interacting)
         {
+
             return;
         }
 
@@ -86,8 +92,17 @@ public class Player : Character
             animator.SetFloat("Y", movement.y);
         }
     }
+    void setDirection()
+    {
+        if (movement.x == 1 && movement.y == 0) { directionalAim = Vector2.right; }
+        if (movement.x == -1 && movement.y == 0) { directionalAim = Vector2.left; }
+        if (movement.y == 1 && movement.x == 0) { directionalAim = Vector2.up; }
+        if (movement.y == -1 && movement.x == 0) { directionalAim = Vector2.down; }
+    }
+
     void interaction()
     {
-        
+        RaycastHit2D aiming = Physics2D.Raycast(raycastPoint.position, directionalAim, 0.1f, interactionLayer);
+        Debug.Log(aiming.collider.name);
     }
 }
