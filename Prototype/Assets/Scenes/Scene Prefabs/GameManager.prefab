@@ -483,11 +483,14 @@ MonoBehaviour:
   male: 0
   female: 0
   moveable: 0
-  characterSprites: []
+  levelManager: {fileID: 0}
   rayCastPoint: {fileID: 4516329536521211519}
   layerMask:
     serializedVersion: 2
     m_Bits: 384
+  sprite:
+  - {fileID: 4516329535848721675}
+  - {fileID: 4516329536331848646}
   animator: {fileID: 4516329535848721668}
   firstSprite: {fileID: -8778861857409344103, guid: e7baca7c165e31c429fed93da23660c3,
     type: 3}
@@ -673,7 +676,6 @@ MonoBehaviour:
   levelmanager: {fileID: 0}
   interacting: 0
   objectType: 
-  forAnimate: {fileID: 0}
 --- !u!1 &4516329536331848640
 GameObject:
   m_ObjectHideFlags: 0
