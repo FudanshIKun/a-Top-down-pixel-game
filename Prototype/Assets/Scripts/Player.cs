@@ -43,7 +43,7 @@ public class Player : Character
     {
         base.setup();
         rb = GetComponent<Rigidbody2D>();
-        interactionLayer = LayerMask.GetMask
+        interactionLayer = LayerMask.GetMask("sad");
     }
     void player_controller()
     {
@@ -102,7 +102,7 @@ public class Player : Character
 
     void interaction()
     {
-        RaycastHit2D aiming = Physics2D.Raycast(raycastPoint.position, directionalAim, 0.1f, interactionLayer);
-        Debug.Log(aiming.collider.name);
+        //RaycastHit2D aiming = Physics2D.Raycast(raycastPoint.position, directionalAim, 0.1f, interactionLayer);
+        //Debug.Log(aiming.collider.name);
     }
 }
