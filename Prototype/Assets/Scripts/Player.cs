@@ -21,7 +21,7 @@ public class Player : Character
 
     private void Awake()
     {
-        
+        Debug.Log("Gag");
     }
 
     private void Start()
