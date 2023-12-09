@@ -1,1 +1,1 @@
-my first personal project when im in colleague.
+my first personal project when i joined in colleague.
